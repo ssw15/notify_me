@@ -1,5 +1,3 @@
-require 'open-uri'
-
 class TargetsController < ApplicationController
   before_action :set_target, only: [:show, :edit, :update, :destroy]
 
@@ -12,15 +10,21 @@ class TargetsController < ApplicationController
   # GET /targets/1
   # GET /targets/1.json
   def show
-    doc = Nokogiri::HTML(open(@target.page_url))
+    # doc = Nokogiri::HTML(open(@target.page_url))
 
     # Store this in the content column of a new Check row
     # Don't forget to associate the new Check to this Target
 
-    c = Check.new
-    c.content = doc.css(@target.element_selector)
-    c.target_id = @target.id
-    c.save
+    # c = Check.new
+    # c.content = doc.css(@target.element_selector)
+    # c.target_id = @target.id
+    # c.save
+
+    # Check.create(:content => doc.css(@target.element_selector), :target_id => @target.id)
+
+    # @target.checks.create :content => doc.css(@target.element_selector)
+
+    # @target.check_now
   end
 
   # GET /targets/new
