@@ -25,6 +25,7 @@ namespace :target do
         #   body: "#{target.page_url} has changed. Go check it out!"
         # )
 
+        TargetMailer.target_changed("a@example.com").deliver
       end
     end
   end
