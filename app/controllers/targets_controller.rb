@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class TargetsController < ApplicationController
   before_action :set_target, only: [:show, :edit, :update, :destroy]
 
@@ -10,6 +12,8 @@ class TargetsController < ApplicationController
   # GET /targets/1
   # GET /targets/1.json
   def show
+    doc = Nokogiri::HTML(open(@target.page_url))
+    @content = doc.css(@target.element_selector)
   end
 
   # GET /targets/new
