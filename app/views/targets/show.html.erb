@@ -17,8 +17,14 @@
   <dt>Element selector:</dt>
   <dd><%= @target.element_selector %></dd>
 
-  <dt>Current content:</dt>
-  <dd><%= @content %></dd>
+  <dt>Checks:</dt>
+  <dd>
+    <ul>
+      <% @target.checks.each do |check| %>
+        <li>(<%= check.created_at %>) <%= check.content %></li>
+      <% end %>
+    </ul>
+  </dd>
 
 </dl>
 

@@ -14,8 +14,13 @@ class TargetsController < ApplicationController
   def show
     doc = Nokogiri::HTML(open(@target.page_url))
 
-    # Store this in a new Check row
-    # doc.css(@target.element_selector)
+    # Store this in the content column of a new Check row
+    # Don't forget to associate the new Check to this Target
+
+    c = Check.new
+    c.content = doc.css(@target.element_selector)
+    c.target_id = @target.id
+    c.save
   end
 
   # GET /targets/new
