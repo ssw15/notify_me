@@ -6,3 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+# Write Ruby here to call the Target#check_now method for each target in the table.
+
+Target.find_each do |target|
+  target.check_now
+end
