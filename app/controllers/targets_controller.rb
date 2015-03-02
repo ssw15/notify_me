@@ -13,7 +13,9 @@ class TargetsController < ApplicationController
   # GET /targets/1.json
   def show
     doc = Nokogiri::HTML(open(@target.page_url))
-    @content = doc.css(@target.element_selector)
+
+    # Store this in a new Check row
+    # doc.css(@target.element_selector)
   end
 
   # GET /targets/new
