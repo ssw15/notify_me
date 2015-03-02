@@ -8,6 +8,9 @@ class Target < ActiveRecord::Base
 
   def check_now
     doc = Nokogiri::HTML(open(self.page_url))
-    self.checks.create :content => doc.css(self.element_selector)
+    content = doc.css(self.element_selector)
+    self.checks.create :content => content
+
+    return content
   end
 end
