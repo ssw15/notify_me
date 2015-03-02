@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :checks
+
   root 'targets#index'
 
   resources :targets
